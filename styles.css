@@ -109,6 +109,7 @@ button {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -275,7 +276,7 @@ button {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('./assets/hero.jpg');
+    background-image: url('./assets/hero.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -490,9 +491,17 @@ button {
 }
 
 /* Cascading fade-in for 3 columns on desktop */
-.servicios-grid .service-card.fade-in.visible:nth-child(3n+1) { animation-delay: 0s; }
-.servicios-grid .service-card.fade-in.visible:nth-child(3n+2) { animation-delay: 0.15s; }
-.servicios-grid .service-card.fade-in.visible:nth-child(3n+3) { animation-delay: 0.3s; }
+.servicios-grid .service-card.fade-in.visible:nth-child(3n+1) {
+    animation-delay: 0s;
+}
+
+.servicios-grid .service-card.fade-in.visible:nth-child(3n+2) {
+    animation-delay: 0.15s;
+}
+
+.servicios-grid .service-card.fade-in.visible:nth-child(3n+3) {
+    animation-delay: 0.3s;
+}
 
 .service-card {
     background: var(--bg-secondary);
@@ -510,12 +519,13 @@ button {
 .service-card:hover {
     border-color: rgba(245, 166, 35, 0.4);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .service-card.featured {
     border-color: rgba(255, 163, 51, 0.3);
 }
+
 .service-card.featured:hover {
     border-color: var(--accent);
     box-shadow: 0 10px 40px rgba(255, 163, 51, 0.15);
@@ -541,7 +551,7 @@ button {
     padding: 6px 12px;
     border-radius: 4px;
     z-index: 2;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .service-card-image img {
@@ -643,7 +653,7 @@ button {
     position: relative;
     transform: scale(0.95) translateY(20px);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     max-height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
@@ -752,7 +762,7 @@ button {
 }
 
 .modal-content p {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.95rem;
     line-height: 1.8;
     margin-bottom: 16px;
@@ -768,7 +778,7 @@ button {
 }
 
 .modal-content li {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 12px;
@@ -1090,9 +1100,13 @@ button {
         gap: 16px;
     }
 
-    /* Override staggered cascade for 2 columns on tablet */
-    .servicios-grid .service-card.fade-in.visible:nth-child(n) { animation-delay: 0s; }
-    .servicios-grid .service-card.fade-in.visible:nth-child(2n+2) { animation-delay: 0.1s; }
+    .servicios-grid .service-card.fade-in.visible:nth-child(n) {
+        animation-delay: 0s;
+    }
+
+    .servicios-grid .service-card.fade-in.visible:nth-child(2n+2) {
+        animation-delay: 0.1s;
+    }
 
     .counters {
         gap: 16px;
@@ -1115,7 +1129,7 @@ button {
     }
 
     .hero-bg {
-        background-position: left center;
+        background-position: 40% center;
     }
 
     .hero-overlay {
@@ -1154,7 +1168,9 @@ button {
     }
 
     /* Single column cascade removed */
-    .servicios-grid .service-card.fade-in.visible:nth-child(n) { animation-delay: 0s; }
+    .servicios-grid .service-card.fade-in.visible:nth-child(n) {
+        animation-delay: 0s;
+    }
 
     .service-card-body {
         padding: 16px;
