@@ -58,42 +58,72 @@ button {
     padding: 0 20px;
 }
 
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-header.left-aligned {
+    text-align: left;
+    align-items: flex-start;
+}
+
+.section-header.left-aligned .section-title {
+    text-align: left;
+}
+
 .section-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-size: clamp(2.2rem, 4vw, 3rem);
     text-transform: uppercase;
     color: var(--text-primary);
     letter-spacing: 0.05em;
     text-align: center;
+    line-height: 1.2;
 }
 
 .section-subtitle {
     font-family: var(--font-heading);
-    font-size: 0.85rem;
+    font-size: 1rem;
     text-transform: uppercase;
     color: var(--accent);
     letter-spacing: 0.15em;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     display: block;
 }
 
 .accent-line {
     width: 60px;
-    height: 2px;
+    height: 3px;
     background: var(--accent);
-    margin: 12px auto 0;
+    margin-top: 16px;
+    border-radius: 2px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
 
 .navbar {
@@ -358,13 +388,13 @@ button {
     text-align: left;
 }
 
-.nosotros-text .section-subtitle,
-.nosotros-text .section-title {
-    text-align: left;
-}
-
-.nosotros-text .section-title {
+.nosotros-lead {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    line-height: 1.2;
     margin-bottom: 24px;
+    letter-spacing: 0.03em;
 }
 
 .nosotros-historia p {
@@ -452,15 +482,17 @@ button {
     padding: 64px 0;
 }
 
-.servicios-header {
-    margin-bottom: 40px;
-}
 
 .servicios-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
+
+/* Cascading fade-in for 3 columns on desktop */
+.servicios-grid .service-card.fade-in.visible:nth-child(3n+1) { animation-delay: 0s; }
+.servicios-grid .service-card.fade-in.visible:nth-child(3n+2) { animation-delay: 0.15s; }
+.servicios-grid .service-card.fade-in.visible:nth-child(3n+3) { animation-delay: 0.3s; }
 
 .service-card {
     background: var(--bg-secondary);
@@ -772,12 +804,7 @@ button {
     overflow: hidden;
 }
 
-.empresas .section-title {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 0.2em;
-    margin-bottom: 32px;
-}
+
 
 .carousel-wrapper {
     position: relative;
@@ -838,69 +865,60 @@ button {
     padding: 64px 0;
 }
 
-.contacto-header {
-    margin-bottom: 36px;
+.contacto .section-header {
+    margin-bottom: 32px;
 }
 
 .contacto-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: start;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 64px;
+    align-items: center;
 }
 
 .contacto-map {
+    position: relative;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    height: 380px;
+    height: 420px;
+    border: none;
 }
 
 .contacto-map iframe {
     width: 100%;
     height: 100%;
     border: 0;
-    filter: grayscale(0.8) brightness(0.7);
+    filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(120%) grayscale(100%);
 }
 
 .contacto-info {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 20px 0;
+    gap: 32px;
 }
 
 .contacto-info-item {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
+    gap: 20px;
 }
 
 .contacto-info-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--bg-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.contacto-info-icon i {
+    font-size: 1.4rem;
     color: var(--accent);
-    font-size: 1rem;
+    padding-top: 2px;
 }
 
 .contacto-info-text h4 {
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin-bottom: 4px;
+    color: var(--text-primary);
 }
 
 .contacto-info-text p {
     color: var(--text-secondary);
-    font-size: 0.88rem;
+    font-size: 0.95rem;
 }
 
 .btn-whatsapp {
@@ -910,14 +928,14 @@ button {
     background: var(--accent);
     color: #1d1d1b;
     font-weight: 700;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     padding: 14px 28px;
     border-radius: 4px;
     transition: transform 0.3s, background 0.3s;
-    margin-top: 8px;
-    text-align: center;
+    margin-top: 16px;
+    align-self: flex-start;
 }
 
 .btn-whatsapp:hover {
@@ -926,7 +944,7 @@ button {
 }
 
 .btn-whatsapp i {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .footer {
@@ -1072,6 +1090,10 @@ button {
         gap: 16px;
     }
 
+    /* Override staggered cascade for 2 columns on tablet */
+    .servicios-grid .service-card.fade-in.visible:nth-child(n) { animation-delay: 0s; }
+    .servicios-grid .service-card.fade-in.visible:nth-child(2n+2) { animation-delay: 0.1s; }
+
     .counters {
         gap: 16px;
     }
@@ -1130,6 +1152,9 @@ button {
     .servicios-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Single column cascade removed */
+    .servicios-grid .service-card.fade-in.visible:nth-child(n) { animation-delay: 0s; }
 
     .service-card-body {
         padding: 16px;
