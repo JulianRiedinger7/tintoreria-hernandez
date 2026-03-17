@@ -830,15 +830,29 @@ button {
     width: max-content;
 }
 
-.carousel-track:hover {
+@media (hover: hover) {
+    .carousel-track:hover {
+        animation-play-state: paused;
+    }
+
+    .carousel-track:hover .carousel-item {
+        opacity: 0.3;
+    }
+
+    .carousel-track .carousel-item:hover {
+        opacity: 1;
+    }
+}
+
+.carousel-track.is-paused {
     animation-play-state: paused;
 }
 
-.carousel-track:hover .carousel-item {
+.carousel-track.is-paused .carousel-item {
     opacity: 0.3;
 }
 
-.carousel-track .carousel-item:hover {
+.carousel-track.is-paused .carousel-item.is-active {
     opacity: 1;
 }
 
@@ -867,13 +881,6 @@ button {
     cursor: pointer;
 }
 
-.carousel-item:hover {
-    transform: scale(1.15);
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 15px rgba(255, 163, 51, 0.2);
-    border-color: rgba(255, 163, 51, 0.4);
-}
-
 .carousel-item img {
     max-width: 100%;
     max-height: 100%;
@@ -885,18 +892,52 @@ button {
 .carousel-item img.enlarge-logo {
     transform: scale(1.4);
 }
-.carousel-item:hover img {
+
+@media (hover: hover) {
+    .carousel-item:hover {
+        transform: scale(1.15);
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 15px rgba(255, 163, 51, 0.2);
+        border-color: rgba(255, 163, 51, 0.4);
+    }
+    
+    .carousel-item:hover img {
+        filter: none;
+    }
+    
+    .carousel-item:hover img.white-logo {
+        filter: brightness(0);
+    }
+    
+    .carousel-item:hover img.drop-shadow-logo {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
+    }
+    
+    .carousel-item:hover img.enlarge-logo {
+        transform: scale(1.4);
+    }
+}
+
+.carousel-item.is-active {
+    transform: scale(1.15);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(255, 163, 51, 0.2);
+    border-color: rgba(255, 163, 51, 0.4);
+}
+
+.carousel-item.is-active img {
     filter: none;
 }
 
-.carousel-item:hover img.white-logo {
+.carousel-item.is-active img.white-logo {
     filter: brightness(0);
 }
 
-.carousel-item:hover img.drop-shadow-logo {
+.carousel-item.is-active img.drop-shadow-logo {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
 }
-.carousel-item:hover img.enlarge-logo {
+
+.carousel-item.is-active img.enlarge-logo {
     transform: scale(1.4);
 }
 

@@ -133,15 +133,22 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(el => fadeObserver.observe(el));
 
-document.addEventListener('touchstart', (e) => {
-    if (!e.target.closest('.carousel-track')) {
-        const track = document.getElementById('carouselTrack');
-        if (track) {
-            const oldPointerEvents = track.style.pointerEvents;
-            track.style.pointerEvents = 'none';
-            setTimeout(() => {
-                track.style.pointerEvents = oldPointerEvents;
-            }, 50);
+const carouselItems = document.querySelectorAll('.carousel-item');
+const carouselTrack = document.getElementById('carouselTrack');
+
+if (carouselTrack) {
+    carouselItems.forEach(item => {
+        item.addEventListener('touchstart', (e) => {
+            carouselItems.forEach(i => i.classList.remove('is-active'));
+            item.classList.add('is-active');
+            carouselTrack.classList.add('is-paused');
+        }, { passive: true });
+    });
+
+    document.addEventListener('touchstart', (e) => {
+        if (!e.target.closest('.carousel-item')) {
+            carouselItems.forEach(i => i.classList.remove('is-active'));
+            carouselTrack.classList.remove('is-paused');
         }
-    }
-}, { passive: true });
+    }, { passive: true });
+}
