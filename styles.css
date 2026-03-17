@@ -490,7 +490,7 @@ button {
     gap: 24px;
 }
 
-/* Cascading fade-in for 3 columns on desktop */
+
 .servicios-grid .service-card.fade-in.visible:nth-child(3n+1) {
     animation-delay: 0s;
 }
@@ -620,7 +620,7 @@ button {
     font-size: 0.75rem;
 }
 
-/* Modal Styles */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -830,6 +830,18 @@ button {
     width: max-content;
 }
 
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-track:hover .carousel-item {
+    opacity: 0.3;
+}
+
+.carousel-track .carousel-item:hover {
+    opacity: 1;
+}
+
 @keyframes scroll-infinite {
     0% {
         transform: translateX(0);
@@ -842,32 +854,50 @@ button {
 
 .carousel-item {
     flex-shrink: 0;
-    width: 140px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 8px;
+    width: 180px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    filter: grayscale(1);
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 0.4s ease;
+    cursor: pointer;
 }
 
 .carousel-item:hover {
-    opacity: 1;
+    transform: scale(1.15);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(255, 163, 51, 0.2);
+    border-color: rgba(255, 163, 51, 0.4);
 }
 
 .carousel-item img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
-    filter: grayscale(1) brightness(0.7);
+    filter: brightness(0) invert(1) opacity(0.6);
+    transition: all 0.4s ease;
+}
+
+.carousel-item img.enlarge-logo {
+    transform: scale(1.4);
+}
+.carousel-item:hover img {
+    filter: none;
+}
+
+.carousel-item:hover img.white-logo {
+    filter: brightness(0);
+}
+
+.carousel-item:hover img.drop-shadow-logo {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
+}
+.carousel-item:hover img.enlarge-logo {
+    transform: scale(1.4);
 }
 
 .contacto {
@@ -1167,7 +1197,7 @@ button {
         grid-template-columns: 1fr;
     }
 
-    /* Single column cascade removed */
+
     .servicios-grid .service-card.fade-in.visible:nth-child(n) {
         animation-delay: 0s;
     }
