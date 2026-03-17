@@ -132,3 +132,16 @@ const fadeObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
 fadeElements.forEach(el => fadeObserver.observe(el));
+
+document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.carousel-track')) {
+        const track = document.getElementById('carouselTrack');
+        if (track) {
+            const oldPointerEvents = track.style.pointerEvents;
+            track.style.pointerEvents = 'none';
+            setTimeout(() => {
+                track.style.pointerEvents = oldPointerEvents;
+            }, 50);
+        }
+    }
+}, { passive: true });
