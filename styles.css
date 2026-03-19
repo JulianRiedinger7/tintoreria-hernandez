@@ -417,10 +417,10 @@ button {
 .nosotros-image {
     position: relative;
     border-radius: 12px;
-    box-shadow: 16px 16px 0px 0px rgba(255, 163, 51, 0.2);
     transition: transform 0.5s, box-shadow 0.5s;
     height: 100%;
     min-height: 300px;
+    overflow: hidden;
 }
 
 .nosotros-image:hover {
@@ -437,6 +437,14 @@ button {
     display: block;
     object-fit: cover;
     border-radius: 12px;
+}
+
+@media (min-width: 992px) {
+    .nosotros-image img {
+        object-position: center center;
+        transform-origin: center center;
+        transform: scale(1.08);
+    }
 }
 
 .counters {
@@ -873,9 +881,10 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.04);
+    background: #323230;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
+    overflow: hidden;
     padding: 12px;
     transition: all 0.4s ease;
     cursor: pointer;
@@ -893,6 +902,12 @@ button {
     transform: scale(1.4);
 }
 
+.carousel-item img.solid-bg-logo {
+    filter: invert(1) grayscale(1) brightness(1.5);
+    mix-blend-mode: lighten;
+    transition: none;
+}
+
 @media (hover: hover) {
     .carousel-item:hover {
         transform: scale(1.15);
@@ -900,19 +915,24 @@ button {
         box-shadow: 0 4px 15px rgba(255, 163, 51, 0.2);
         border-color: rgba(255, 163, 51, 0.4);
     }
-    
+
     .carousel-item:hover img {
         filter: none;
     }
-    
+
     .carousel-item:hover img.white-logo {
         filter: brightness(0);
     }
-    
+
+    .carousel-item:hover img.solid-bg-logo {
+        filter: none;
+        mix-blend-mode: multiply;
+    }
+
     .carousel-item:hover img.drop-shadow-logo {
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
     }
-    
+
     .carousel-item:hover img.enlarge-logo {
         transform: scale(1.4);
     }
@@ -931,6 +951,11 @@ button {
 
 .carousel-item.is-active img.white-logo {
     filter: brightness(0);
+}
+
+.carousel-item.is-active img.solid-bg-logo {
+    filter: none;
+    mix-blend-mode: multiply;
 }
 
 .carousel-item.is-active img.drop-shadow-logo {
@@ -969,7 +994,6 @@ button {
     width: 100%;
     height: 100%;
     border: 0;
-    filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(120%) grayscale(100%);
 }
 
 .contacto-info {
